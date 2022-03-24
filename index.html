@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+        }
+
+        body {
+            margin: 0px;
+            background-image: linear-gradient(to bottom, #9e477033, #631d7642), url('res/bg1.jpg');
+            height: 100vh;
+            background-size: cover;
+        }
+
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .calc-title {
+            font-size: 30px;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .pace-calculator {
+            backdrop-filter: blur(5px);
+            margin-top: 20vh;
+            opacity: 0.8;
+            background-color: #2E2532;
+            color: white;
+            padding: 5%;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .pace-calculator:hover {
+            opacity: 0.925;
+        }
+
+        .pace-calculator:hover input[type='number'] {
+            border-color: #201a23;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            color: rgb(238, 237, 237);
+        }
+
+        .input-row {
+            padding-top: 2%;
+            padding-bottom: 2%;
+        }
+
+        input[type='number'] {
+            border: 0;
+            border-bottom: 3px solid #201a23af;
+            background-color: #2E2532;
+        }
+
+        ::placeholder {
+            color: rgb(238, 237, 237);
+        }
+
+        select {
+            border: none;
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+            font-size: 15px;
+        }
+
+        option {
+            font-size: 15px;
+        }
+
+        label {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .button {
+            background-color: transparent;
+            border-radius: 5px;
+            border: 3px solid #201a23af;
+            transition: 0.3s;
+            padding: 5px;
+        }
+
+        .button:hover {
+            background-color: #201a23af;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #display-error {
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        #pd {
+            width: 50px;
+        }
+    </style>
+
+    <title>Pace Calculator</title>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="pace-calculator">
+            <p class="calc-title">Pace Calculator</p>
+            <form action="results.html" id="form" method="GET">
+                <div class="input">
+                    <div class="time input-row">
+                        <label>Time:</label>
+                        <label>
+                            <input placeholder="Hrs" name="time-hours" type="number" id="th" min="0" max="59"> :
+                        </label>
+                        <label>
+                            <input placeholder="Min" name="time-minutes" type="number" id="tm" min="0" max="59"> :
+                        </label>
+                        <label>
+                            <input placeholder="Sec" name="time-seconds" type="number" id="ts" min="0" max="59">
+                        </label>
+                    </div>
+                    <div class="distance input-row">
+                        <label>Distance:</label>
+                        <label>
+                            <input type="number" name="distance" id="dst" min="1">
+                        </label>
+                        <select name="d-measurement">
+                            <option value="km" selected>Kilometers</option>
+                            <option value="mi">Mile</option>
+                            <option value="m">Meters</option>
+                            <option value="yrd">Yards</option>
+                            <option disabled>----------</option>
+                            <option value="marathon">Marathon</option>
+                            <option value="half-marathon">Half Marathon</option>
+                            <option value="10km">10km</option>
+                            <option value="5km">5km</option>
+                            <option value="2mi">2 Mile</option>
+                            <option value="3km">3km</option>
+                            <option value="mi">1 Mile</option>
+                            <option value="1500m">1500m</option>
+                            <option value="800m">800m</option>
+                            <option value="400m">400m</option>
+                            <option value="50km">50km</option>
+                            <option value="100km">100km</option>
+                            <option value="100mi">100 Mile</option>
+                        </select>
+                    </div>
+                    <div class="pace input-row">
+                        <label>Pace:</label>
+                        <label>
+                            <input placeholder="Hrs" name="pace-hours" type="number" id="ph" min="0" max="59"> :
+                        </label>
+                        <label>
+                            <input placeholder="Min" name="pace-minutes" type="number" id="pm" min="0" max="59"> :
+                        </label>
+                        <label>
+                            <input placeholder="Sec" name="pace-seconds" type="number" id="ps" min="0" max="59">
+                        </label>
+                        <label>
+                            <label>Per</label>
+                            <input placeholder="Dist" name="pace-distance" type="number" id="pd" min="1">
+                        </label>
+                        <select name="p-measurement">
+                            <option value="km" selected>Kilometers</option>
+                            <option value="mi">Mile</option>
+                            <option value="m">Meters</option>
+                            <option disabled>-------------</option>
+                            <option value="400m">400m</option>
+                            <option value="200m">200m</option>
+                            <option value="5km">5km</option>
+                            <option value="10km">10km</option>
+                        </select>
+                    </div>
+                    <div class="submit input-row">
+                        <input type="submit" class="button" id="sbmt">
+                        <input type="reset" class="button">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>
+    let sub = document.getElementById('sbmt');
+    let form = document.getElementById('form');
+
+    sub.addEventListener('click', (e) => {
+        let fv = document.getElementById('th').value > 0 ||
+            document.getElementById('tm').value > 0 ||
+            document.getElementById('ts').value > 0;
+
+        let tv = document.getElementById('ph').value > 0 ||
+            document.getElementById('pm').value > 0 ||
+            document.getElementById('ps').value > 0;
+
+        if (!(fv || tv))
+        {
+            alert("You need to input at least 2 variables!");
+            sub.disabled = true;
+        }
+    });
+
+    form.addEventListener("input", () => {
+        let fv = document.getElementById('th').value > 0 ||
+            document.getElementById('tm').value > 0 ||
+            document.getElementById('ts').value > 0;
+
+        let tv = document.getElementById('ph').value > 0 ||
+            document.getElementById('pm').value > 0 ||
+            document.getElementById('ps').value > 0;
+
+        if (fv || tv)
+        {
+            sub.disabled = false;
+        }
+    });
+</script>
+
+</html>

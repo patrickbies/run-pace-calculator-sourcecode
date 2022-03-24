@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+        }
+
+        body {
+            margin: 0px;
+            background-image: linear-gradient(to bottom, #9e477033, #631d7642), url('res/bg2.jpg');
+            height: 100vh;
+            background-size: cover;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-info {
+            backdrop-filter: blur(5px);
+            margin-top: 20vh;
+            opacity: 0.8;
+            background-color: #2E2532;
+            color: white;
+            padding: 5%;
+            border-radius: 15px;
+            transition: 0.3s;
+            padding-top: 2%;
+            padding-bottom: 3%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info:hover {
+            opacity: 0.925;
+        }
+
+        .input-item {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px;
+        }
+
+        .input-item>input {
+            width: 100%;
+        }
+
+        .input-item>label {
+            width: 70px;
+            margin-right: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        p {
+            font-size: 24px;
+            padding: 0;
+        }
+
+        .button {
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: lightgray;
+        }
+
+        .btc {
+            margin-top: 1%;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+    <title>Results</title>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="contact-info">
+            <div>
+                <p>Please enter your name and email and we will send you your splits for free</p>
+            </div>
+            <div>
+                <form action="confirmation.html" action="GET">
+                    <div class="input">
+                        <div class="input-item">
+                            <label>Name:</label>
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <div class="input-item">
+                            <label>Email:</label>
+                            <input type="email" name="email" id="email">
+                        </div>
+                        <div class="input-item">
+                            <input type="submit" id="submit" class="button">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="btc">
+                <a href="/" class="button">Back To Calculator</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
